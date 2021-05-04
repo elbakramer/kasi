@@ -19,9 +19,10 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: [3.8, 3.9]
         architecture: [x86, x64]
-        include:
-        - os: ubuntu-latest
-          architecture: x64
+        exclude:
+        - os: windows-latest
+        - os: macos-latest
+        - architecture: x86
 
     steps:
     - uses: actions/checkout@v2

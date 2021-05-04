@@ -4,12 +4,28 @@ on:
   release:
     types:
     - published
+  workflow_dispatch:
+    inputs:
+      new_version:
+        description: New version number
+        required: true
+      skip_test_pypi_publish:
+        desctiption: Skip publish to test PyPI
+        required: false
+        default: false
+      skip_pypi_publish:
+        desctiption: Skip publish to PyPI
+        required: false
+        default: false
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.release.tag_name }}
+        fetch-depth: 0
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -34,11 +50,19 @@ jobs:
       run: |
         poetry install
     - name: Check version
-      uses: actions/githuib-script@v4
+      uses: actions/github-script@v4
       id: check-version
       with:
         script: |
-          const version = context.payload.release.tag_name.slice(1)
+          const version = (() => {
+            if (context.payload.release) {
+              return context.payload.release.tag_name.slice(1)
+            } else if (context.payload.inputs) {
+              return context.payload.inputs.new_version
+            } else {
+              throw 'Cannot check version to publish'
+            }
+          })()
           core.setOutput('version', version)
     - name: Bump version
       run: |
@@ -47,22 +71,25 @@ jobs:
       run: |
         poetry build
     - name: Publish distribution to Test PyPI
-      env:
-        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.TEST_PYPI_TOKEN }}
-      run: |
-        poetry config repositories.pypi-test https://test.pypi.org/legacy/
-        poetry publish -n -r pypi-test
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        password: ${{ secrets.TEST_PYPI_TOKEN }}
+        repository_url: https://test.pypi.org/legacy/
+        skip_existing: true
+      if: ${{ github.event.inputs.skip_test_pypi_publish != 'true' }}
     - name: Install from test and test running
       run: |
         pip install --extra-index-url https://test.pypi.org/simple kasi
-        python -c 'import kasi;print(kasi.__version__)'
+        python -c "import kasi;print(kasi.__version__)"
         pip uninstall -y kasi
+      if: ${{ github.event.inputs.skip_test_pypi_publish != 'true' }}
     - name: Publish distribution to PyPI
-      env:
-        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
-      run: |
-        poetry publish -n
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        password: ${{ secrets.PYPI_TOKEN }}
+      if: ${{ github.event.inputs.skip_pypi_publish != 'true' }}
     - name: Install and test running
       run: |
         pip install kasi
-        python -c 'import kasi;print(kasi.__version__)'
+        python -c "import kasi;print(kasi.__version__)"
+      if: ${{ github.event.inputs.skip_pypi_publish != 'true' }}
