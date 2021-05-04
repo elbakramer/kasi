@@ -91,22 +91,43 @@ KASI (Korea Astronomy and Space Science Institute) Open API Python Wrapper
 Features
 --------
 
-* TODO
+* Provides simple python wrappers for KASI_ OpenAPIs described in `this page`_.
+
+.. _KASI: https://kasi.re.kr/kor/index
+.. _`this page`: https://astro.kasi.re.kr/information/pageView/31
+
+Usage
+-----
+
+Check `this notebook`_ for example usage.
+
+.. _`this notebook`: https://github.com/elbakramer/kasi/blob/master/notebooks/usage.ipynb
 
 Install
 -------
 
+Use ``pip`` for install:
+
 .. code-block:: console
 
-    # Install pipx if poetry is not installed
-    $ python -m pip install pipx
-    $ python -m pipx ensurepath
+    $ pip install kasi
+
+If you want to setup a development environment, use ``poetry`` instead:
+
+.. code-block:: console
 
     # Install poetry using pipx
+    $ python -m pip install pipx
+    $ python -m pipx ensurepath
     $ pipx install poetry
 
-    # Install dependencies
+    # Clone repository
+    $ git clone https://github.com/elbakramer/kasi.git
+    $ cd kasi/
+
+    # Install dependencies and hooks
     $ poetry install
+    $ poetry run pre-commit install
 
 Credits
 -------

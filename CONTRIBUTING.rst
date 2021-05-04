@@ -61,13 +61,13 @@ Ready to contribute? Here's how to set up `kasi` for local development.
 
 2. Clone your fork locally:
 
-.. code-block:: console
+   .. code-block:: console
 
     $ git clone https://github.com/your_name_here/kasi.git
 
 3. Set up your fork for local development:
 
-.. code-block:: console
+   .. code-block:: console
 
     # Install poetry if you don't have one:
     # https://python-poetry.org/docs/#installation
@@ -93,7 +93,7 @@ Ready to contribute? Here's how to set up `kasi` for local development.
 
 4. Create a branch for local development:
 
-.. code-block:: console
+   .. code-block:: console
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
@@ -101,7 +101,7 @@ Ready to contribute? Here's how to set up `kasi` for local development.
 
 5. When you're done making changes, you can check if your changes pass some checks:
 
-.. code-block:: console
+   .. code-block:: console
 
     # Code formatters
     $ poetry run isort .
@@ -120,7 +120,7 @@ Ready to contribute? Here's how to set up `kasi` for local development.
 
 6. Commit your changes and push your branch to GitHub:
 
-.. code-block:: console
+   .. code-block:: console
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
