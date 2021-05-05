@@ -63,39 +63,40 @@ Ready to contribute? Here's how to set up `kasi` for local development.
 
    .. code-block:: console
 
-    $ git clone https://github.com/your_name_here/kasi.git
+       $ git clone https://github.com/your_name_here/kasi.git
 
 3. Set up your fork for local development:
 
    .. code-block:: console
 
-    # Install poetry if you don't have one:
-    # https://python-poetry.org/docs/#installation
+       $ # Install poetry if you don't have one:
+       $ # https://python-poetry.org/docs/#installation
 
-    # Example below will install poetry using pipx
+       $ # Example below will install poetry using pipx
 
-    # Install pipx
-    $ pip install pipx
-    $ pipx ensurepath
+       $ # Install ``pipx``
+       $ pip install pipx
+       $ pipx ensurepath
 
-    # Install poetry using pipx
-    $ pipx install poetry
+       $ # Install ``poetry`` using ``pipx``
+       $ pipx install poetry
 
-    # Run `poetry install` to install dependencies
-    $ cd kasi/
-    $ poetry install
+       $ # Run ``poetry install`` to install dependencies
+       $ cd kasi/
+       $ poetry install
 
-    # Install pre-commit hooks
-    $ poetry run pre-commit install
+       $ # Install ``pre-commit`` hooks
+       $ poetry run pre-commit install
 
-   When you run `poetry install`, all the dependencies including development tools will be installed under a virtualenv managed by poetry.
-   Then you can run those commands using `poetry run command args...`, like the last command in the example above.
+   When you run ``poetry install``, all the dependencies including development tools will be installed under a virtualenv managed by poetry.
+
+   Then you can run those commands using ``poetry run command args...``, like the last command in the example above.
 
 4. Create a branch for local development:
 
    .. code-block:: console
 
-    $ git checkout -b name-of-your-bugfix-or-feature
+       $ git checkout -b name-of-your-bugfix-or-feature
 
    Now you can make your changes locally.
 
@@ -103,17 +104,17 @@ Ready to contribute? Here's how to set up `kasi` for local development.
 
    .. code-block:: console
 
-    # Code formatters
-    $ poetry run isort .
-    $ poetry run black .
+       $ # Code formatters
+       $ poetry run isort .
+       $ poetry run black .
 
-    # Static analysis tools
-    $ poetry run flake8 kasi tests
-    $ poetry run pylint kasi tests
-    $ poetry run mypy kasi tests
+       $ # Linters and Static analysis tools
+       $ poetry run flake8 kasi tests
+       $ poetry run pylint kasi tests
+       $ poetry run mypy kasi tests
 
-    # Testing for current python version
-    $ poetry run pytest --cov
+       $ # Testing
+       $ poetry run pytest --cov
 
    Or you can just commit/push your changes to make pre-commit hooks trigger those checks automatically.
    If you want to skip those hooks temporarily, add `--no-verify` option for git commit/push.
@@ -122,9 +123,9 @@ Ready to contribute? Here's how to set up `kasi` for local development.
 
    .. code-block:: console
 
-    $ git add .
-    $ git commit -m "Your detailed description of your changes."
-    $ git push origin name-of-your-bugfix-or-feature
+       $ git add .
+       $ git commit -m "Your detailed description of your changes."
+       $ git push origin name-of-your-bugfix-or-feature
 
 7. Submit a pull request through the GitHub website.
 
@@ -152,6 +153,6 @@ Then run:
 
     $ poetry run bump2version patch  # possible: major / minor / patch
     $ git push
-    $ git push --tags
+    $ git push --follow-tags
 
 Travis will then deploy to PyPI if tests pass.

@@ -49,6 +49,9 @@ pytest-cov = "^2.11.1"
 pytest-xdist = "^2.2.1"
 Sphinx = "^3.5.4"
 sphinx-autoapi = "^1.8.1"
+nbsphinx = "^0.8.4"
+ipython = "^7.23.0"
+pandoc = "^1.0.2"
 
 [tool.poetry.extras]
 dev = [

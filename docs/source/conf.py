@@ -73,13 +73,23 @@ language = None
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns: list[str] = []
 
+# Warnings to suppress
+suppress_warnings = ["autosectionlabel.*"]
+
 # -- Autoapi configuration ---------------------------------------------------
 
 extensions.append("autoapi.extension")
 
 autoapi_type = "python"
 autoapi_dirs = [package_dir]
+autoapi_keep_files = True
 
+
+# -- Nbsphinx configuration --------------------------------------------------
+
+extensions.append("nbsphinx")
+
+html_sourcelink_suffix = ""
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -87,6 +97,7 @@ autoapi_dirs = [package_dir]
 # a list of builtin themes.
 #
 html_theme = "alabaster"
+pygments_style = "sphinx"
 
 # Theme options are theme-specific and customize the look and feel of a
 # theme further.  For a list of options available for each theme, see the

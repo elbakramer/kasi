@@ -12,6 +12,8 @@ Welcome to KASI's documentation!
    authors
    history
 
+   autoapi/index
+
 Indices and tables
 ==================
 

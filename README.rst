@@ -84,7 +84,7 @@ KASI
 KASI (Korea Astronomy and Space Science Institute) Open API Python Wrapper
 
 * Free software: `MIT License`_
-* Documentation: https://kasi.readthedocs.io.
+* Documentation: https://elbakramer.github.io/kasi
 
 .. _`MIT License`: https://github.com/elbakramer/kasi/blob/master/LICENSE
 
@@ -99,9 +99,11 @@ Features
 Usage
 -----
 
-Check `this notebook`_ for example usage.
+* Check `this notebook`_ for example usage.
+* Check Usage_ documentation.
 
-.. _`this notebook`: https://github.com/elbakramer/kasi/blob/master/notebooks/usage.ipynb
+.. _`this notebook`: https://github.com/elbakramer/kasi/blob/master/docs/source/notebooks/usage.ipynb
+.. _Usage: https://elbakramer.github.io/kasi/usage.html
 
 Install
 -------
@@ -116,16 +118,16 @@ If you want to setup a development environment, use ``poetry`` instead:
 
 .. code-block:: console
 
-    # Install poetry using pipx
+    $ # Install poetry using pipx
     $ python -m pip install pipx
     $ python -m pipx ensurepath
     $ pipx install poetry
 
-    # Clone repository
+    $ # Clone repository
     $ git clone https://github.com/elbakramer/kasi.git
     $ cd kasi/
 
-    # Install dependencies and hooks
+    $ # Install dependencies and hooks
     $ poetry install
     $ poetry run pre-commit install
 
