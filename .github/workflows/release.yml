@@ -66,12 +66,13 @@ jobs:
           core.setOutput('version', version)
     - name: Bump version
       run: |
-        poetry run bump2version --new-version ${{ steps.check-version.outputs.version }} patch
+        poetry run bump2version --no-commit --no-tag --allow-dirty --new-version=0 patch
+        poetry run bump2version --no-commit --no-tag --allow-dirty --new-version=${{ steps.check-version.outputs.version }} patch
     - name: Build
       run: |
         poetry build
     - name: Publish distribution to Test PyPI
-      uses: pypa/gh-action-pypi-publish@master
+      uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.TEST_PYPI_TOKEN }}
         repository_url: https://test.pypi.org/legacy/
@@ -84,7 +85,7 @@ jobs:
         pip uninstall -y kasi
       if: ${{ github.event.inputs.skip_test_pypi_publish != 'true' }}
     - name: Publish distribution to PyPI
-      uses: pypa/gh-action-pypi-publish@master
+      uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.PYPI_TOKEN }}
       if: ${{ github.event.inputs.skip_pypi_publish != 'true' }}
