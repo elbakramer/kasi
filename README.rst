@@ -84,7 +84,7 @@ KASI
 KASI (Korea Astronomy and Space Science Institute) Open API Python Wrapper
 
 * Free software: `MIT License`_
-* Documentation: https://elbakramer.github.io/kasi
+* Documentation: https://elbakramer.github.io/kasi/
 
 .. _`MIT License`: https://github.com/elbakramer/kasi/blob/master/LICENSE
 
