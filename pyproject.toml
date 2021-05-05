@@ -30,6 +30,7 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.8"
 pandas = "^1.2.4"
+requests = "^2.25.1"
 
 [tool.poetry.dev-dependencies]
 actions-toolkit = "^0.0.5"
@@ -39,6 +40,7 @@ codecov = "^2.1.11"
 coverage = "^5.5"
 dunamai = "^1.5.5"
 flake8 = "^3.9.1"
+ipython = "^7.23.0"
 isort = "^5.8.0"
 mypy = "^0.812"
 pip-tools = "^6.1.0"
@@ -50,32 +52,6 @@ pytest-xdist = "^2.2.1"
 Sphinx = "^3.5.4"
 sphinx-autoapi = "^1.8.1"
 nbsphinx = "^0.8.4"
-ipython = "^7.23.0"
-pandoc = "^1.0.2"
-
-[tool.poetry.extras]
-dev = [
-    "black",
-    "bump2version",
-    "codecov",
-    "coverage",
-    "dunamai",
-    "flake8",
-    "isort",
-    "mypy",
-    "pip-tools",
-    "pre-commit",
-    "pylint",
-    "pytest",
-    "pytest-cov",
-    "pytest-xdist",
-    "Sphinx",
-    "sphinx-autoapi",
-]
-docs = [
-    "Sphinx",
-    "sphinx-autoapi",
-]
 
 [tool.poetry.scripts]
 kasi = "kasi.cli:main"
