@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kasi"
-version = "0.1.2"
+version = "0.1.3"
 description = "KASI (Korea Astronomy and Space Science Institute) Open API Python Wrapper"
 license = "MIT"
 authors = ["Yunseong Hwang <kika1492@gmail.com>"]
