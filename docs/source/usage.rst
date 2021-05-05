@@ -8,8 +8,10 @@ To use KASI in a project:
 
     import kasi
 
-Other usages can be found in the following notebooks:
+.. ifconfig:: "nbsphinx" in extensions
 
-.. toctree::
+    Other usages can be found in the following notebooks:
 
-   notebooks/usage
+    .. toctree::
+
+       notebooks/usage

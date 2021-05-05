@@ -15,6 +15,8 @@ from __future__ import annotations
 import os
 import sys
 
+on_rtd = os.environ.get("READTHEDOCS") == "True"
+
 docs_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 project_dir = os.path.abspath(os.path.join(docs_dir, ".."))
 package_dir = os.path.abspath(os.path.join(project_dir, "kasi"))
@@ -52,6 +54,7 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.doctest",
     "sphinx.ext.githubpages",
+    "sphinx.ext.ifconfig",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
     "sphinx.ext.todo",
@@ -84,10 +87,10 @@ autoapi_type = "python"
 autoapi_dirs = [package_dir]
 autoapi_keep_files = True
 
-
 # -- Nbsphinx configuration --------------------------------------------------
 
-extensions.append("nbsphinx")
+if not on_rtd:
+    extensions.append("nbsphinx")
 
 html_sourcelink_suffix = ""
 
