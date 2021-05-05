@@ -1,0 +1,1092 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usage Example Notebook &#8212; KASI 0.1.3 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../contributing.html" />
+    <link rel="prev" title="Usage" href="../usage.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">KASI</a></h1>
+
+
+
+<p class="blurb">KASI (Korea Astronomy and Space Science Institute) Open API Python Wrapper</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=elbakramer&repo=kasi&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">KASI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">Usage</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Usage Example Notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../usage.html">Usage</a><ul>
+      <li>Previous: <a href="../usage.html" title="previous chapter">Usage</a></li>
+      <li>Next: <a href="../contributing.html" title="next chapter">Contributing</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Usage-Example-Notebook">
+<h1>Usage Example Notebook<a class="headerlink" href="#Usage-Example-Notebook" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">kasi</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">serviceKey</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span> <span class="o">=</span> <span class="n">LrsrCldInfoService</span><span class="p">(</span><span class="n">serviceKey</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getLunCalInfo</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;lunDay&#39;: 11,
+     &#39;lunIljin&#39;: &#39;정축(丁丑)&#39;,
+     &#39;lunLeapmonth&#39;: &#39;평&#39;,
+     &#39;lunMonth&#39;: 11,
+     &#39;lunNday&#39;: 29,
+     &#39;lunSecha&#39;: &#39;갑오(甲午)&#39;,
+     &#39;lunWolgeon&#39;: &#39;병자(丙子)&#39;,
+     &#39;lunYear&#39;: 2014,
+     &#39;solDay&#39;: &#39;01&#39;,
+     &#39;solJd&#39;: 2457024,
+     &#39;solLeapyear&#39;: &#39;평&#39;,
+     &#39;solMonth&#39;: &#39;01&#39;,
+     &#39;solWeek&#39;: &#39;목&#39;,
+     &#39;solYear&#39;: 2015}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getSolCalInfo</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">29</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;lunDay&#39;: 29,
+     &#39;lunIljin&#39;: &#39;갑오(甲午)&#39;,
+     &#39;lunLeapmonth&#39;: &#39;평&#39;,
+     &#39;lunMonth&#39;: &#39;01&#39;,
+     &#39;lunNday&#39;: 29,
+     &#39;lunSecha&#39;: &#39;을미(乙未)&#39;,
+     &#39;lunWolgeon&#39;: &#39;무인(戊寅)&#39;,
+     &#39;lunYear&#39;: 2015,
+     &#39;solDay&#39;: 19,
+     &#39;solJd&#39;: 2457101,
+     &#39;solLeapyear&#39;: &#39;평&#39;,
+     &#39;solMonth&#39;: &#39;03&#39;,
+     &#39;solWeek&#39;: &#39;목&#39;,
+     &#39;solYear&#39;: 2015}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getSpcifyLunCalInfo</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;평&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: [{&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;계사(癸巳)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;경진(庚辰)&#39;,
+      &#39;lunWolgeon&#39;: &#39;무인(戊寅)&#39;,
+      &#39;lunYear&#39;: 2000,
+      &#39;solDay&#39;: &#39;05&#39;,
+      &#39;solJd&#39;: 2451580,
+      &#39;solLeapyear&#39;: &#39;윤&#39;,
+      &#39;solMonth&#39;: &#39;02&#39;,
+      &#39;solWeek&#39;: &#39;토&#39;,
+      &#39;solYear&#39;: 2000},
+     {&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;정해(丁亥)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;신사(辛巳)&#39;,
+      &#39;lunWolgeon&#39;: &#39;경인(庚寅)&#39;,
+      &#39;lunYear&#39;: 2001,
+      &#39;solDay&#39;: 24,
+      &#39;solJd&#39;: 2451934,
+      &#39;solLeapyear&#39;: &#39;평&#39;,
+      &#39;solMonth&#39;: &#39;01&#39;,
+      &#39;solWeek&#39;: &#39;수&#39;,
+      &#39;solYear&#39;: 2001},
+     {&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;신해(辛亥)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;임오(壬午)&#39;,
+      &#39;lunWolgeon&#39;: &#39;임인(壬寅)&#39;,
+      &#39;lunYear&#39;: 2002,
+      &#39;solDay&#39;: 12,
+      &#39;solJd&#39;: 2452318,
+      &#39;solLeapyear&#39;: &#39;평&#39;,
+      &#39;solMonth&#39;: &#39;02&#39;,
+      &#39;solWeek&#39;: &#39;화&#39;,
+      &#39;solYear&#39;: 2002},
+     {&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;을사(乙巳)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;계미(癸未)&#39;,
+      &#39;lunWolgeon&#39;: &#39;갑인(甲寅)&#39;,
+      &#39;lunYear&#39;: 2003,
+      &#39;solDay&#39;: &#39;01&#39;,
+      &#39;solJd&#39;: 2452672,
+      &#39;solLeapyear&#39;: &#39;평&#39;,
+      &#39;solMonth&#39;: &#39;02&#39;,
+      &#39;solWeek&#39;: &#39;토&#39;,
+      &#39;solYear&#39;: 2003},
+     {&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;경자(庚子)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;갑신(甲申)&#39;,
+      &#39;lunWolgeon&#39;: &#39;병인(丙寅)&#39;,
+      &#39;lunYear&#39;: 2004,
+      &#39;solDay&#39;: 22,
+      &#39;solJd&#39;: 2453027,
+      &#39;solLeapyear&#39;: &#39;윤&#39;,
+      &#39;solMonth&#39;: &#39;01&#39;,
+      &#39;solWeek&#39;: &#39;목&#39;,
+      &#39;solYear&#39;: 2004},
+     {&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;갑자(甲子)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;을유(乙酉)&#39;,
+      &#39;lunWolgeon&#39;: &#39;무인(戊寅)&#39;,
+      &#39;lunYear&#39;: 2005,
+      &#39;solDay&#39;: &#39;09&#39;,
+      &#39;solJd&#39;: 2453411,
+      &#39;solLeapyear&#39;: &#39;평&#39;,
+      &#39;solMonth&#39;: &#39;02&#39;,
+      &#39;solWeek&#39;: &#39;수&#39;,
+      &#39;solYear&#39;: 2005},
+     {&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;무오(戊午)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;병술(丙戌)&#39;,
+      &#39;lunWolgeon&#39;: &#39;경인(庚寅)&#39;,
+      &#39;lunYear&#39;: 2006,
+      &#39;solDay&#39;: 29,
+      &#39;solJd&#39;: 2453765,
+      &#39;solLeapyear&#39;: &#39;평&#39;,
+      &#39;solMonth&#39;: &#39;01&#39;,
+      &#39;solWeek&#39;: &#39;일&#39;,
+      &#39;solYear&#39;: 2006},
+     {&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;계미(癸未)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;정해(丁亥)&#39;,
+      &#39;lunWolgeon&#39;: &#39;임인(壬寅)&#39;,
+      &#39;lunYear&#39;: 2007,
+      &#39;solDay&#39;: 18,
+      &#39;solJd&#39;: 2454150,
+      &#39;solLeapyear&#39;: &#39;평&#39;,
+      &#39;solMonth&#39;: &#39;02&#39;,
+      &#39;solWeek&#39;: &#39;일&#39;,
+      &#39;solYear&#39;: 2007},
+     {&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;정축(丁丑)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;무자(戊子)&#39;,
+      &#39;lunWolgeon&#39;: &#39;갑인(甲寅)&#39;,
+      &#39;lunYear&#39;: 2008,
+      &#39;solDay&#39;: &#39;07&#39;,
+      &#39;solJd&#39;: 2454504,
+      &#39;solLeapyear&#39;: &#39;윤&#39;,
+      &#39;solMonth&#39;: &#39;02&#39;,
+      &#39;solWeek&#39;: &#39;목&#39;,
+      &#39;solYear&#39;: 2008},
+     {&#39;lunDay&#39;: &#39;01&#39;,
+      &#39;lunIljin&#39;: &#39;신미(辛未)&#39;,
+      &#39;lunLeapmonth&#39;: &#39;평&#39;,
+      &#39;lunMonth&#39;: &#39;01&#39;,
+      &#39;lunNday&#39;: &#39;01&#39;,
+      &#39;lunSecha&#39;: &#39;기축(己丑)&#39;,
+      &#39;lunWolgeon&#39;: &#39;병인(丙寅)&#39;,
+      &#39;lunYear&#39;: 2009,
+      &#39;solDay&#39;: 26,
+      &#39;solJd&#39;: 2454858,
+      &#39;solLeapyear&#39;: &#39;평&#39;,
+      &#39;solMonth&#39;: &#39;01&#39;,
+      &#39;solWeek&#39;: &#39;월&#39;,
+      &#39;solYear&#39;: 2009}]},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 17}}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getJulDayInfo</span><span class="p">(</span><span class="mi">2457024</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;lunDay&#39;: 11,
+     &#39;lunIljin&#39;: &#39;정축(丁丑)&#39;,
+     &#39;lunLeapmonth&#39;: &#39;평&#39;,
+     &#39;lunMonth&#39;: 11,
+     &#39;lunNday&#39;: 29,
+     &#39;lunSecha&#39;: &#39;갑오(甲午)&#39;,
+     &#39;lunWolgeon&#39;: &#39;병자(丙子)&#39;,
+     &#39;lunYear&#39;: 2014,
+     &#39;solDay&#39;: &#39;01&#39;,
+     &#39;solJd&#39;: 2457024,
+     &#39;solLeapyear&#39;: &#39;평&#39;,
+     &#39;solMonth&#39;: &#39;01&#39;,
+     &#39;solWeek&#39;: &#39;목&#39;,
+     &#39;solYear&#39;: 2015}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span> <span class="o">=</span> <span class="n">RiseSetInfoService</span><span class="p">(</span><span class="n">serviceKey</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getAreaRiseSetInfo</span><span class="p">(</span><span class="s2">&quot;20150101&quot;</span><span class="p">,</span> <span class="s2">&quot;서울&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;aste&#39;: &#39;1858  &#39;,
+     &#39;astm&#39;: &#39;0613  &#39;,
+     &#39;civile&#39;: &#39;1753  &#39;,
+     &#39;civilm&#39;: &#39;0718  &#39;,
+     &#39;latitude&#39;: 3733,
+     &#39;latitudeNum&#39;: &#39;37.5500000&#39;,
+     &#39;location&#39;: &#39;서울    &#39;,
+     &#39;locdate&#39;: 20150101,
+     &#39;longitude&#39;: 12658,
+     &#39;longitudeNum&#39;: &#39;126.9666660&#39;,
+     &#39;moonrise&#39;: &#39;1429  &#39;,
+     &#39;moonset&#39;: &#39;0341  &#39;,
+     &#39;moontransit&#39;: 213246,
+     &#39;naute&#39;: &#39;1826  &#39;,
+     &#39;nautm&#39;: &#39;0645  &#39;,
+     &#39;sunrise&#39;: &#39;0747  &#39;,
+     &#39;sunset&#39;: &#39;1724  &#39;,
+     &#39;suntransit&#39;: 123519}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getLCRiseSetInfo</span><span class="p">(</span><span class="s2">&quot;20150101&quot;</span><span class="p">,</span> <span class="mf">128.2</span><span class="p">,</span> <span class="mf">37.15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;aste&#39;: &#39;1853  &#39;,
+     &#39;astm&#39;: &#39;0608  &#39;,
+     &#39;civile&#39;: &#39;1749  &#39;,
+     &#39;civilm&#39;: &#39;0712  &#39;,
+     &#39;latitude&#39;: 3709,
+     &#39;latitudeNum&#39;: &#39;37.1500000&#39;,
+     &#39;location&#39;: &#39;제천    &#39;,
+     &#39;locdate&#39;: 20150101,
+     &#39;longitude&#39;: 12812,
+     &#39;longitudeNum&#39;: &#39;128.2000000&#39;,
+     &#39;moonrise&#39;: &#39;1425  &#39;,
+     &#39;moonset&#39;: &#39;0335  &#39;,
+     &#39;moontransit&#39;: 212744,
+     &#39;naute&#39;: &#39;1822  &#39;,
+     &#39;nautm&#39;: &#39;0639  &#39;,
+     &#39;sunrise&#39;: &#39;0741  &#39;,
+     &#39;sunset&#39;: &#39;1720  &#39;,
+     &#39;suntransit&#39;: 123027}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span> <span class="o">=</span> <span class="n">SrAltudeInfoService</span><span class="p">(</span><span class="n">serviceKey</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getAreaSrAltudeInfo</span><span class="p">(</span><span class="s2">&quot;20150101&quot;</span><span class="p">,</span> <span class="s2">&quot;서울&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;altitudeMeridian&#39;: &#39;29˚ 24´&#39;,
+     &#39;altitude_09&#39;: &#39;11˚ 04´&#39;,
+     &#39;altitude_12&#39;: &#39;28˚ 50´&#39;,
+     &#39;altitude_15&#39;: &#39;20˚ 31´&#39;,
+     &#39;altitude_18&#39;: &#39;-07˚ 14´&#39;,
+     &#39;azimuth_09&#39;: &#39;130˚ 49´&#39;,
+     &#39;azimuth_12&#39;: &#39;170˚ 43´&#39;,
+     &#39;azimuth_15&#39;: &#39;215˚ 26´&#39;,
+     &#39;azimuth_18&#39;: &#39;246˚ 27´&#39;,
+     &#39;latitude&#39;: 3733,
+     &#39;latitudeNum&#39;: &#39;37.5500000&#39;,
+     &#39;location&#39;: &#39;서울&#39;,
+     &#39;locdate&#39;: 20150101,
+     &#39;longitude&#39;: 12658,
+     &#39;longitudeNum&#39;: &#39;126.9666660&#39;}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getLCSrAltudeInfo</span><span class="p">(</span><span class="s2">&quot;20150101&quot;</span><span class="p">,</span> <span class="mf">128.2</span><span class="p">,</span> <span class="mf">37.15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;altitudeMeridian&#39;: &#39;29˚ 24´&#39;,
+     &#39;altitude_09&#39;: &#39;11˚ 04´&#39;,
+     &#39;altitude_12&#39;: &#39;28˚ 50´&#39;,
+     &#39;altitude_15&#39;: &#39;20˚ 31´&#39;,
+     &#39;altitude_18&#39;: &#39;-07˚ 14´&#39;,
+     &#39;azimuth_09&#39;: &#39;130˚ 49´&#39;,
+     &#39;azimuth_12&#39;: &#39;170˚ 43´&#39;,
+     &#39;azimuth_15&#39;: &#39;215˚ 26´&#39;,
+     &#39;azimuth_18&#39;: &#39;246˚ 27´&#39;,
+     &#39;latitude&#39;: 3733,
+     &#39;latitudeNum&#39;: &#39;37.5500000&#39;,
+     &#39;location&#39;: &#39;서울&#39;,
+     &#39;locdate&#39;: 20150101,
+     &#39;longitude&#39;: 12658,
+     &#39;longitudeNum&#39;: &#39;126.9666660&#39;}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span> <span class="o">=</span> <span class="n">SpcdeInfoService</span><span class="p">(</span><span class="n">serviceKey</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getHoliDeInfo</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;dateKind&#39;: &#39;01&#39;,
+     &#39;dateName&#39;: &#39;삼일절&#39;,
+     &#39;isHoliday&#39;: &#39;Y&#39;,
+     &#39;locdate&#39;: 20150301,
+     &#39;seq&#39;: 1}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getRestDeInfo</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;dateKind&#39;: &#39;01&#39;,
+     &#39;dateName&#39;: &#39;삼일절&#39;,
+     &#39;isHoliday&#39;: &#39;Y&#39;,
+     &#39;locdate&#39;: 20150301,
+     &#39;seq&#39;: 1}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">get24DivisionsInfo</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: [{&#39;dateKind&#39;: &#39;03&#39;,
+      &#39;dateName&#39;: &#39;입하&#39;,
+      &#39;isHoliday&#39;: &#39;N&#39;,
+      &#39;kst&#39;: &#39;0452      &#39;,
+      &#39;locdate&#39;: 20150506,
+      &#39;seq&#39;: 1,
+      &#39;sunLongitude&#39;: 45},
+     {&#39;dateKind&#39;: &#39;03&#39;,
+      &#39;dateName&#39;: &#39;소만&#39;,
+      &#39;isHoliday&#39;: &#39;N&#39;,
+      &#39;kst&#39;: &#39;1745      &#39;,
+      &#39;locdate&#39;: 20150521,
+      &#39;seq&#39;: 2,
+      &#39;sunLongitude&#39;: 60}]},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 2}}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getSundryDayInfo</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;dateKind&#39;: &#39;04&#39;,
+     &#39;dateName&#39;: &#39;토왕용사&#39;,
+     &#39;isHoliday&#39;: &#39;N&#39;,
+     &#39;kst&#39;: &#39;2002      &#39;,
+     &#39;locdate&#39;: 20150117,
+     &#39;seq&#39;: 1,
+     &#39;sunLongitude&#39;: 297}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span> <span class="o">=</span> <span class="n">LunPhInfoService</span><span class="p">(</span><span class="n">serviceKey</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getLunPhInfo</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: {&#39;lunAge&#39;: 10.4,
+     &#39;solDay&#39;: &#39;01&#39;,
+     &#39;solMonth&#39;: &#39;01&#39;,
+     &#39;solWeek&#39;: &#39;목&#39;,
+     &#39;solYear&#39;: 2015}},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 1}}}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span> <span class="o">=</span> <span class="n">AstroEventInfoService</span><span class="p">(</span><span class="n">serviceKey</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">service</span><span class="o">.</span><span class="n">getAstroEventInfo</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;response&#39;: {&#39;header&#39;: {&#39;resultCode&#39;: &#39;00&#39;, &#39;resultMsg&#39;: &#39;NORMAL SERVICE.&#39;},
+  &#39;body&#39;: {&#39;items&#39;: {&#39;item&#39;: [{&#39;astroEvent&#39;: &#39;거대마젤란망원경(Giant Magellan Telescope)은 한국, 미국, 호주 등이 공동으로 개발하는 세계 최대 광학망원경이다. 주경 전체 지름은 25.4m로 지름 8.4m인 조각 거울 7장으로 구성된다. 주경에 반사된 별빛은 위쪽의 부경 7장에서 다시 반사되어 주경 가운데 거울의 구멍 속으로 들어오고, 구멍 속으로 들어온 별빛은 관측기기를 통해 컴퓨터로 분석된다. 거대마젤란망원경은 허블 우주망원경보다 10배 더 선명한 영상을 제공할 수 있으며, 별과 행성의 형성, 은하의 형성과 진화, 블랙홀, 암흑물질과 암흑에너지, 우주 최초의 별과 은하 등의 연구에 사용된다. 이 망원경은 지구에서 우주를 관측하기에 가장 좋은 지역인 남반구 칠레의 라스 캄파나스 천문대에 2019년 완공될 예정이다.&#39;,
+      &#39;astroTime&#39;: &#39;&#39;,
+      &#39;astroTitle&#39;: &#39;대형광학망원경 개발 및 은하진화 연구&#39;,
+      &#39;locdate&#39;: &#39;201501  &#39;,
+      &#39;seq&#39;: 1},
+     {&#39;astroEvent&#39;: &#39;지구 근일점(0.983290A.U.)&#39;,
+      &#39;astroTime&#39;: &#39;16:00&#39;,
+      &#39;astroTitle&#39;: &#39;&#39;,
+      &#39;locdate&#39;: 20150104,
+      &#39;seq&#39;: 1},
+     {&#39;astroEvent&#39;: &#39;보름(망), 달 크기 15′03″&#39;,
+      &#39;astroTime&#39;: &#39;13:53&#39;,
+      &#39;astroTitle&#39;: &#39;&#39;,
+      &#39;locdate&#39;: 20150105,
+      &#39;seq&#39;: 1},
+     {&#39;astroEvent&#39;: &#39;G.갈릴레이 - 목성의 4대위성 발견(1610)&#39;,
+      &#39;astroTitle&#39;: &#39;&#39;,
+      &#39;locdate&#39;: 20150107,
+      &#39;seq&#39;: 1},
+     {&#39;astroEvent&#39;: &#39;달 원지점 405,408km&#39;,
+      &#39;astroTime&#39;: &#39;03:00&#39;,
+      &#39;astroTitle&#39;: &#39;&#39;,
+      &#39;locdate&#39;: 20150110,
+      &#39;seq&#39;: 1},
+     {&#39;astroEvent&#39;: &#39;수성 - 금성 최대근접(0°39′)&#39;,
+      &#39;astroTime&#39;: &#39;10:00&#39;,
+      &#39;astroTitle&#39;: &#39;&#39;,
+      &#39;locdate&#39;: 20150111,
+      &#39;seq&#39;: 1},
+     {&#39;astroEvent&#39;: &#39;하현&#39;,
+      &#39;astroTime&#39;: &#39;18:46&#39;,
+      &#39;astroTitle&#39;: &#39;&#39;,
+      &#39;locdate&#39;: 20150113,
+      &#39;seq&#39;: 1},
+     {&#39;astroEvent&#39;: &#39;수성 동방최대이각(18°54′)&#39;,
+      &#39;astroTime&#39;: &#39;06:00&#39;,
+      &#39;astroTitle&#39;: &#39;&#39;,
+      &#39;locdate&#39;: 20150115,
+      &#39;seq&#39;: 1},
+     {&#39;astroEvent&#39;: &#39;화성 - 해왕성 최대근접(0°14′)&#39;,
+      &#39;astroTime&#39;: &#39;06:00&#39;,
+      &#39;astroTitle&#39;: &#39;&#39;,
+      &#39;locdate&#39;: 20150120,
+      &#39;seq&#39;: 1},
+     {&#39;astroEvent&#39;: &#39;합삭&#39;,
+      &#39;astroTime&#39;: &#39;22:15&#39;,
+      &#39;astroTitle&#39;: &#39;&#39;,
+      &#39;locdate&#39;: 20150120,
+      &#39;seq&#39;: 2}]},
+   &#39;numOfRows&#39;: 10,
+   &#39;pageNo&#39;: 1,
+   &#39;totalCount&#39;: 16}}}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Yunseong Hwang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/notebooks/usage.ipynb"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/elbakramer/kasi" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

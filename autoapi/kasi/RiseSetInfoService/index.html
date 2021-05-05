@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kasi.RiseSetInfoService &#8212; KASI 0.1.3 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/style.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="kasi.SpcdeInfoService" href="../SpcdeInfoService/index.html" />
+    <link rel="prev" title="kasi.LunPhInfoService" href="../LunPhInfoService/index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">KASI</a></h1>
+
+
+
+<p class="blurb">KASI (Korea Astronomy and Space Science Institute) Open API Python Wrapper</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=elbakramer&repo=kasi&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">KASI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kasi</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">API Reference</a><ul>
+  <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kasi</span></code></a><ul>
+      <li>Previous: <a href="../LunPhInfoService/index.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kasi.LunPhInfoService</span></code></a></li>
+      <li>Next: <a href="../SpcdeInfoService/index.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kasi.SpcdeInfoService</span></code></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-kasi.RiseSetInfoService">
+<span id="kasi-risesetinfoservice"></span><h1><a class="reference internal" href="#module-kasi.RiseSetInfoService" title="kasi.RiseSetInfoService"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kasi.RiseSetInfoService</span></code></a><a class="headerlink" href="#module-kasi.RiseSetInfoService" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kasi.RiseSetInfoService.RiseSetInfoService" title="kasi.RiseSetInfoService.RiseSetInfoService"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RiseSetInfoService</span></code></a></p></td>
+<td><p>지역별 해달 출몰시각정보, 위치별 해달 출몰시각정보를 조회하는 서비스 입니다.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="kasi.RiseSetInfoService.RiseSetInfoService">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">kasi.RiseSetInfoService.</span></code><code class="sig-name descname"><span class="pre">RiseSetInfoService</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serviceKey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/kasi/RiseSetInfoService.html#RiseSetInfoService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kasi.RiseSetInfoService.RiseSetInfoService" title="Permalink to this definition">¶</a></dt>
+<dd><p>지역별 해달 출몰시각정보, 위치별 해달 출몰시각정보를 조회하는 서비스 입니다.</p>
+<dl class="py attribute">
+<dt id="kasi.RiseSetInfoService.RiseSetInfoService.locations">
+<code class="sig-name descname"><span class="pre">locations</span></code><a class="reference internal" href="../../../_modules/kasi/RiseSetInfoService.html#RiseSetInfoService.locations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kasi.RiseSetInfoService.RiseSetInfoService.locations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="kasi.RiseSetInfoService.RiseSetInfoService.getAreaRiseSetInfo">
+<code class="sig-name descname"><span class="pre">getAreaRiseSetInfo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locdate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/kasi/RiseSetInfoService.html#RiseSetInfoService.getAreaRiseSetInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kasi.RiseSetInfoService.RiseSetInfoService.getAreaRiseSetInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>날짜와 지역을 기준으로 일출, 일남중, 일몰, 월출, 월남중, 월몰, 시민박명(아침),
+시민박명(저녁), 항해박명(아침), 항해박명(저녁), 천문박명(아침), 천문박명(저녁)
+등의 정보를 제공한다.</p>
+<p>2016년 기준으로 저장되어 있는 지역은 강릉, 강화도, 거제, 거창, 경산, 경주,
+고성(강원), 고양, 고흥, 광양, 광주, 광주(경기), 구미, 군산, 김천, 김해, 남원,
+남해, 대관령, 대구, 대덕, 대전, 독도, 동해, 마산, 목포, 무안, 밀양, 변산,
+보령, 보성, 보현산, 부산, 부안, 부천, 사천, 삼척, 상주, 서귀포, 서산, 서울,
+서천, 성산일출봉, 세종, 소백산, 속초, 수원, 순천, 승주, 시흥, 아산, 안동,
+안산, 안양, 양양, 양평, 여수, 여수공항, 여주, 영광, 영덕, 영월, 영주, 영천,
+완도, 용인, 울릉도, 울산, 울진, 원주, 의성, 익산, 인천, 임실, 장수, 장흥,
+전주, 정읍, 제주, 제주(레), 제천, 주문진, 진도, 진주, 진해, 창원, 천안, 청주,
+청주공항, 추풍령, 춘양, 춘천, 충주, 태백, 태안, 통영, 파주, 평택, 포항, 해남,
+화성, 흑산도 이다.</p>
+<p>매년 계산하는 지역은 크게 바뀌지 않는다.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kasi.RiseSetInfoService.RiseSetInfoService.getLCRiseSetInfo">
+<code class="sig-name descname"><span class="pre">getLCRiseSetInfo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locdate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dnYn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/kasi/RiseSetInfoService.html#RiseSetInfoService.getLCRiseSetInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kasi.RiseSetInfoService.RiseSetInfoService.getLCRiseSetInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>날짜와 위치(위도, 경도)를 기준으로 일출, 일남중, 일몰, 월출, 월남중, 월몰,
+시민박명(아침), 시민박명(저녁), 항해박명(아침), 항해박명(저녁), 천문박명(아침),
+천문박명(저녁) 등의 정보를 제공한다.</p>
+<p>출몰시각이 계산된 우리나라 지역 중, 입력된 위치와 근접거리의 데이터를 조회한다.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Yunseong Hwang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/autoapi/kasi/RiseSetInfoService/index.rst"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/elbakramer/kasi" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
